@@ -1,0 +1,18 @@
+<div class="container py-4">
+    <h1 class="mb-4 fw-bold">Trending GitHub Repos</h1>
+
+    <div *ngIf="loading()" class="d-flex justify-content-center mb-3">
+        <mat-progress-spinner mode="indeterminate" diameter="32"></mat-progress-spinner>
+    </div>
+
+    <div class="list-group">
+        <app-repo-details *ngFor="let repo of repos()" [repo]="repo" (nameClick)="openModal($event)">
+        </app-repo-details>
+    </div>
+
+    <div #anchor class="text-center mt-4 loading-sentinel">
+        <div *ngIf="loading() && currentPage() > 1" class="d-flex justify-content-center">
+            <mat-progress-spinner mode="indeterminate" diameter="32"></mat-progress-spinner>
+        </div>
+    </div>
+</div>

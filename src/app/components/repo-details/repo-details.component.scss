@@ -1,0 +1,10 @@
+@use 'variables' as vars;
+
+.repo-container{
+    background: vars.$repo-bg-color;
+    border-radius: 20px;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}

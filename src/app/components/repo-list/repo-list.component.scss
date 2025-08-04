@@ -1,0 +1,12 @@
+@use 'variables' as vars;
+
+.container {
+  max-width: vars.$list-container-width;
+}
+
+.loading-sentinel {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

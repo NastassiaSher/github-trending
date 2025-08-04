@@ -1,0 +1,31 @@
+<div class="repo-container d-flex px-5 py-4 align-items-center mb-2">
+    <img
+        [src]="repo.owner.avatarUrl"
+        [alt]="repo.owner.login"
+        width="50"
+        height="50"
+        class="rounded-circle"
+    />
+    <div class="details ms-3 flex-grow-1 overflow-hidden">
+        <h5 class="mb-1 hover-underline" role="button" (click)="onNameClick()">{{ repo.name }}</h5>
+        <div class="mb-2 text-muted text-truncate" [attr.title]="repo.description">{{ repo.description }}</div>
+        <div class="d-flex align-items-center">
+            <mat-chip class="me-2">
+                <div class="d-flex align-items-center">
+                    <mat-icon aria-hidden="false" aria-label="Star" fontIcon="star" class="text-primary me-2"></mat-icon>
+                    Stars: {{ repo.stargazersCount | shortNumber}}
+                </div>
+            </mat-chip>
+            <mat-chip class="me-2">
+                <div class="d-flex align-items-center">
+                    <mat-icon aria-hidden="false" aria-label="Issue" fontIcon="adjust" class="text-info me-2"></mat-icon>
+                    Issues: {{ repo.openIssuesCount | shortNumber}}
+                </div>
+            </mat-chip>
+            <p class="text-muted m-0">
+                Submitted {{ getSubmittedAgo(repo.createdDate) }} days ago by {{ repo.owner.login }}
+            </p>
+        </div>
+
+    </div>
+</div>
