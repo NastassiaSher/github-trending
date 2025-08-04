@@ -2,58 +2,39 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
 
-## Development server
+It implements the Circunomics Frontend Coding Challenge. The app displays the most starred GitHub repos created in the last 30 days and provides a smooth browsing experience with pagination. Users can view repository details and rate repos via a modal window.
 
-To start a local development server, run:
+  
+## Features
+- List most starred GitHub repos created in the last 30 days
+- Show repository details per row: name, description, stars, issues, owner’s username & avatar
+- Infinite scroll pagination to load more repos
+- Click repo name to open a modal with detailed info
+- Rate repositories with a 5-star rating inside the modal
+- Display user rating next to the repository name after rating
+- Responsive and user-friendly UI
 
-```bash
+
+## Development server 
+
+### Clone the repo
+git clone https://github.com/NastassiaSher/github-trending.git
+
+### Navigate to the project directory
+cd github-trending
+
+### Install dependencies
+npm install
+
+### Run the Angular development server
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
 ## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command: 
 
 ```bash
-ng e2e
+
+ng  test
+
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
