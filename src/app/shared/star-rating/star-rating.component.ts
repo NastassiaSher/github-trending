@@ -5,8 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-star-rating',
   imports: [CommonModule, MatIconModule],
-  templateUrl: './star-rating.component.html',
-  styleUrl: './star-rating.component.scss'
+  templateUrl: './star-rating.component.html'
 })
 export class StarRatingComponent implements OnInit {
   

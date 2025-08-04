@@ -8,8 +8,6 @@ import { StarRatingComponent } from "../../shared/star-rating/star-rating.compon
 import { CommonModule } from '@angular/common';
 
 
-
-
 @Component({
   selector: 'app-repo-details',
   imports: [MatIconModule, MatChipsModule, ShortNumberPipe, StarRatingComponent, CommonModule],

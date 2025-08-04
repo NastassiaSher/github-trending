@@ -11,10 +11,9 @@ import { StarRatingComponent } from '../../shared/star-rating/star-rating.compon
 @Component({
   selector: 'app-repo-modal.component',
   imports: [RepoDetailsComponent, StarRatingComponent],
-  templateUrl: './repo-modal.component.html',
-  styleUrl: './repo-modal.component.scss'
+  templateUrl: './repo-modal.component.html'
 })
-export class RepoModalComponent implements OnInit{
+export class RepoModalComponent {
 
   private store = inject(Store<AppState>);
 
@@ -24,10 +23,6 @@ export class RepoModalComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: {repo: Repo}, 
     private dialogRef: MatDialogRef<RepoModalComponent>
   ) {}
-
-  ngOnInit(): void {
-    console.log('RepoModalComponent initialized with props:', this.data);
-  }
 
   closeModal() {
     this.dialogRef.close();
