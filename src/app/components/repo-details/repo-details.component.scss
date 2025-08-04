@@ -1,4 +1,4 @@
-@use 'variables' as vars;
+@use './../../../styles/variables.scss' as vars;
 
 .repo-container {
     min-width: vars.$repo-container-width;

@@ -22,7 +22,6 @@ export class RepoEffects {
                             description: repo.description,
                             stargazersCount: repo.stargazers_count,
                             openIssuesCount: repo.open_issues_count,
-                            htmlUrl: repo.html_url,
                             owner: {
                                 login: repo.owner.login,
                                 avatarUrl: repo.owner.avatar_url,

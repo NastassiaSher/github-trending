@@ -1,4 +1,4 @@
-@use 'variables' as vars;
+@use './../../../styles/variables.scss' as vars;
 
 .container {
   max-width: vars.$list-container-width;

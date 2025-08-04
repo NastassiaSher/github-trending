@@ -9,7 +9,6 @@ export interface Repo {
   description: string;
   stargazersCount: number;
   openIssuesCount: number;
-  htmlUrl: string;
   owner: Owner;
   rating?: number;
   createdDate: string;
