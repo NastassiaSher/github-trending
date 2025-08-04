@@ -4,13 +4,15 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import { Repo } from '../../store/models/repo.model';
 import { ShortNumberPipe } from '../../shared/pipes/short-number.pipe';
+import { StarRatingComponent } from "../../shared/star-rating/star-rating.component";
+import { CommonModule } from '@angular/common';
 
 
 
 
 @Component({
   selector: 'app-repo-details',
-  imports: [MatIconModule, MatChipsModule, ShortNumberPipe],
+  imports: [MatIconModule, MatChipsModule, ShortNumberPipe, StarRatingComponent, CommonModule],
   templateUrl: './repo-details.component.html',
   styleUrl: './repo-details.component.scss'
 })
@@ -32,6 +34,11 @@ export class RepoDetailsComponent {
 
   onNameClick() {
     this.nameClick.emit(this.repo.id);
+  }
+
+  shouldShowStarRating(): boolean {
+    const r = this.repo.myRating;
+    return r !== null && r !== undefined && r !== 0;
   }
 
 }

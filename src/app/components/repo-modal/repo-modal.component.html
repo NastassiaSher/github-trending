@@ -5,5 +5,9 @@
     </div>
     <div class="modal-body">
         <app-repo-details [repo]="data.repo"></app-repo-details>
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <app-star-rating [defaultRating]="data.repo.myRating!" (ratingChange)="onRatingChange($event)"></app-star-rating>
+            <button class="button-primary mt-3" (click)="submitRating()">Rate it</button>
+        </div>
     </div>
 </div>

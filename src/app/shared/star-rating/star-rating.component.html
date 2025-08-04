@@ -1,0 +1,13 @@
+<div class="d-flex align-items-center">
+    <span class="me-2">My rate: </span>
+    <ng-container *ngFor="let star of stars; let i = index">
+        <mat-icon
+            aria-hidden="false"
+            aria-label="Star"
+            fontIcon="{{ isFilled(i) ? 'star' : 'star_outline' }}"
+            class="icon-small me-1"
+            (click)="setRating(i + 1)">
+        </mat-icon>
+    </ng-container>
+    <span class="ms-2">({{ rating || 0 }})</span>
+</div>

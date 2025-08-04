@@ -30,5 +30,11 @@ export const repoReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+  on(RepoActions.rateRepo, (state, { repoId, rating }) => ({
+    ...state,
+    repos: state.repos.map(repo =>
+      repo.id === repoId ? { ...repo, myRating: rating } : repo
+    )
   }))
 );

@@ -13,4 +13,5 @@ export interface Repo {
   owner: Owner;
   rating?: number;
   createdDate: string;
+  myRating?: number;
 }

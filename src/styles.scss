@@ -5,6 +5,8 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+@use 'variables' as vars;
+@use 'sass:color';
 
 html {
   @include mat.theme((
@@ -12,7 +14,7 @@ html {
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: Inter,
     density: 0,
   ));
 
@@ -31,7 +33,59 @@ html {
 
 html, body { height: 100%; }
 body { 
-  margin: 0; 
+  margin: 0;
+  color: vars.$default-font-color;
   font-family: 'Inter', Tahoma, sans-serif;
   height: auto;
+}
+
+:root {
+  @include mat.dialog-overrides((
+    container-color: vars.$repo-bg-color    
+  ));
+}
+
+.avatar {
+  width: 94px;
+  height: 94px;
+  border-radius: 7px;
+}
+
+.chip {
+  width: 100px;
+  height: 26px;
+  background: vars.$white;
+  border-radius: 5px;
+  font-size: vars.$font-size-small;
+  padding: 2px;
+}
+
+.font-small {
+  font-size: vars.$font-size-small;
+}
+
+.icon-small {
+  font-size: vars.$icon-size-small;
+  line-height: vars.$line-height-large;
+}
+
+.button-primary {
+  background-color: vars.$primary-blue;
+  color: vars.$white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+
+  &:hover {
+    background-color: color.adjust(vars.$primary-blue, $lightness: -5%);
+  }
+
+  &:active {
+    transform: scale(0.96);
+    background-color: color.adjust(vars.$primary-blue, $lightness: 10%);
+  }
 }

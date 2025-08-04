@@ -67,13 +67,14 @@ export class RepoListComponent implements AfterViewInit, OnDestroy {
   }
 
   openModal(event: number) {
-    console.log('Repo ID clicked:', event);
     const selectedRepo = this.repos().find(repo => repo.id === event);
     this.dialog.open(RepoModalComponent, {
       data: {
         repo: selectedRepo
       },
-      maxWidth: this.dialogMaxWidth
+      maxWidth: this.dialogMaxWidth,
+      width: '100%'
     });
   }
+  
 }

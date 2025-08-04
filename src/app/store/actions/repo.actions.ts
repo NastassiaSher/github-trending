@@ -15,3 +15,8 @@ export const loadReposFailure = createAction(
   '[Repo] Load Repos Failure',
   props<{ error: string }>()
 );
+
+export const rateRepo = createAction(
+  '[Repo] Rate Repo',
+  props<{ repoId: number; rating: number }>()
+);
