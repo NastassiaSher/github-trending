@@ -9,5 +9,5 @@
             (click)="setRating(i + 1)">
         </mat-icon>
     </ng-container>
-    <span class="ms-2">({{ rating || 0 }})</span>
+    <span class="ms-2" *ngIf="showTotal">({{ rating || 0 }})</span>
 </div>

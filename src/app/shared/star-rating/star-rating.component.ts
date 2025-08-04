@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class StarRatingComponent implements OnInit {
   
   @Input() defaultRating: number = 0;
+  @Input() showTotal: boolean = true;
   @Output() ratingChange = new EventEmitter<number>();
 
   rating = 0;
