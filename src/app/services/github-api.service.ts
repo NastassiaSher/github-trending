@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiRepositoriesResponse } from '../store/models/repo.model'
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ export class GithubApiService {
   private http = inject(HttpClient);
   private BASE_URL = 'https://api.github.com/search/repositories';
 
-  getTrendingRepos(page = 1): Observable<any> {
+  getTrendingRepos(page = 1): Observable<ApiRepositoriesResponse> {
     const date30DaysAgo = this.getDate30DaysAgo();
     const query = `q=created:>${date30DaysAgo}&sort=stars&order=desc&page=${page}`;
     const url = `${this.BASE_URL}?${query}`;
 
-    return this.http.get(url);
+    return this.http.get<ApiRepositoriesResponse>(url);
   }
 
   private getDate30DaysAgo(): string {
