@@ -5,8 +5,7 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
-  OnDestroy,
-  effect
+  OnDestroy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,6 +16,7 @@ import { loadRepos } from '../../store/actions/repo.actions';
 import { selectRepos, selectLoading } from '../../store/selectors/repo.selectors';
 import { RepoDetailsComponent } from '../repo-details/repo-details.component';
 import { RepoModalComponent } from '../repo-modal/repo-modal.component';
+import { RepositoryData } from '../../store/models/repo.model';
 
 
 @Component({
@@ -58,6 +58,10 @@ export class RepoListComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.observer?.disconnect();
+  }
+
+  trackByRepoId(index: number, repo: RepositoryData): number {
+    return repo.id;
   }
 
   loadMore() {

@@ -6,7 +6,7 @@
     </div>
 
     <div class="list-group">
-        <app-repo-details *ngFor="let repo of repos()" [repo]="repo" (nameClick)="openModal($event)">
+        <app-repo-details *ngFor="let repo of repos(); trackBy: trackByRepoId" [repo]="repo" (nameClick)="openModal($event)">
         </app-repo-details>
     </div>
 
