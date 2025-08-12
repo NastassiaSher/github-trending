@@ -1,28 +1,48 @@
 import { repoReducer, initialState, RepoState } from './repo.reducer';
 import * as RepoActions from '../actions/repo.actions';
-import { Repo } from '../models/repo.model';
+import { RepositoryData } from '../models/repo.model';
 
 describe('repoReducer', () => {
-  const repo1: Repo = {
+  const repo1: RepositoryData = {
     id: 1,
-    name: 'Repo 1',
-    description: 'Description 1',
-    stargazersCount: 100,
-    openIssuesCount: 5,
-    owner: { login: 'owner1', avatarUrl: 'avatar1.png' },
-    createdDate: '2025-07-01T12:00:00Z',
-    myRating: 2
+    repositoryInformation: {
+      name: 'Repo 1',
+      fullName: 'owner1/repo-1',
+      htmlUrl: 'https://github.com/owner1/repo-1',
+      description: 'Description 1',
+      createdDate: '2025-07-01T12:00:00Z',
+    },
+    metaInformation: {
+      stargazersCount: 100,
+      openIssuesCount: 5,
+      myRating: 2,
+    },
+    owner: {
+      login: 'owner1',
+      avatarUrl: 'avatar1.png',
+    },
   };
 
-  const repo2: Repo = {
+  const repo2: RepositoryData = {
     id: 2,
-    name: 'Repo 2',
-    description: 'Description 2',
-    stargazersCount: 50,
-    openIssuesCount: 3,
-    owner: { login: 'owner2', avatarUrl: 'avatar2.png' },
-    createdDate: '2025-07-02T12:00:00Z',
+    repositoryInformation: {
+      name: 'Repo 2',
+      fullName: 'owner2/repo-2',
+      htmlUrl: 'https://github.com/owner2/repo-2',
+      description: 'Description 2',
+      createdDate: '2025-07-02T12:00:00Z',
+    },
+    metaInformation: {
+      stargazersCount: 50,
+      openIssuesCount: 3,
+      // myRating omitted here
+    },
+    owner: {
+      login: 'owner2',
+      avatarUrl: 'avatar2.png',
+    },
   };
+
 
   it('should return the initial state by default', () => {
     const action = { type: 'Unknown' } as any;
@@ -62,10 +82,10 @@ describe('repoReducer', () => {
     const action = RepoActions.rateRepo({ repoId: repo1.id, rating: newRating });
     const state = repoReducer(startingState, action);
     const updatedRepo = state.repos.find(r => r.id === repo1.id);
-    expect(updatedRepo?.myRating).toBe(newRating);
+    expect(updatedRepo?.metaInformation.myRating).toBe(newRating);
 
     // Other repo ratings should remain unchanged (or undefined)
     const otherRepo = state.repos.find(r => r.id === repo2.id);
-    expect(otherRepo?.myRating).toBeUndefined();
+    expect(otherRepo?.metaInformation.myRating).toBeUndefined();
   });
 });

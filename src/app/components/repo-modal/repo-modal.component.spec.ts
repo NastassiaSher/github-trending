@@ -3,8 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RepoModalComponent } from './repo-modal.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { rateRepo } from '../../store/actions/repo.actions';
-import { Repo } from '../../store/models/repo.model';
+import { RepositoryData } from '../../store/models/repo.model';
 
 // Non-standalone stub for app-repo-details
 @Component({
@@ -25,18 +24,23 @@ class StarRatingStubComponent {
   @Output() ratingChange = new EventEmitter<number>();
 }
 
-const mockRepo: Repo = {
+const mockRepo: RepositoryData = {
   id: 123,
-  name: 'test-repo',
-  description: 'A test repo description',
-  stargazersCount: 100,
-  openIssuesCount: 5,
+  repositoryInformation: {
+    name: 'test-repo',
+    fullName: 'test-user/test-repo',
+    htmlUrl: 'https://github.com/test-user/test-repo',
+    description: 'A test repo description',
+    createdDate: '2024-01-01',
+  },
+  metaInformation: {
+    stargazersCount: 100,
+    openIssuesCount: 5,
+  },
   owner: {
     login: 'test-user',
-    avatarUrl: 'https://example.com/avatar.png'
+    avatarUrl: 'https://example.com/avatar.png',
   },
-  createdDate: '2024-01-01',
-  myRating: 3
 };
 
 describe('RepoModalComponent', () => {

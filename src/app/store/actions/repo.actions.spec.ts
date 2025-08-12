@@ -1,5 +1,5 @@
 import * as RepoActions from './repo.actions';
-import { Repo } from '../models/repo.model';
+import { RepositoryData } from '../models/repo.model';
 
 describe('Repo Actions', () => {
   it('should create loadRepos action', () => {
@@ -11,27 +11,44 @@ describe('Repo Actions', () => {
   });
 
   it('should create loadReposSuccess action', () => {
-    const repos: Repo[] = [
+    const repos: RepositoryData[] = [
       {
         id: 1,
-        name: 'Repo 1',
-        description: 'Description 1',
-        stargazersCount: 100,
-        openIssuesCount: 5,
-        owner: { login: 'owner1', avatarUrl: 'avatar1.png' },
-        createdDate: '2025-07-01T12:00:00Z',
-        rating: 4,
-        myRating: 5
+        repositoryInformation: {
+          name: 'Repo 1',
+          fullName: 'owner1/repo-1',
+          htmlUrl: 'https://github.com/owner1/repo-1',
+          description: 'Description 1',
+          createdDate: '2025-07-01T12:00:00Z',
+        },
+        metaInformation: {
+          stargazersCount: 100,
+          openIssuesCount: 5,
+          myRating: 5,
+        },
+        owner: {
+          login: 'owner1',
+          avatarUrl: 'avatar1.png',
+        },
       },
       {
         id: 2,
-        name: 'Repo 2',
-        description: 'Description 2',
-        stargazersCount: 200,
-        openIssuesCount: 10,
-        owner: { login: 'owner2', avatarUrl: 'avatar2.png' },
-        createdDate: '2025-07-02T12:00:00Z',
-      }
+        repositoryInformation: {
+          name: 'Repo 2',
+          fullName: 'owner2/repo-2',
+          htmlUrl: 'https://github.com/owner2/repo-2',
+          description: 'Description 2',
+          createdDate: '2025-07-02T12:00:00Z',
+        },
+        metaInformation: {
+          stargazersCount: 200,
+          openIssuesCount: 10,
+        },
+        owner: {
+          login: 'owner2',
+          avatarUrl: 'avatar2.png',
+        },
+      },
     ];
 
     const action = RepoActions.loadReposSuccess({ repos });

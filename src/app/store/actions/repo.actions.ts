@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Repo } from '../models/repo.model';
+import { RepositoryData } from '../models/repo.model';
 
 export const loadRepos = createAction(
   '[Repo] Load Repos',
@@ -8,7 +8,7 @@ export const loadRepos = createAction(
 
 export const loadReposSuccess = createAction(
   '[Repo] Load Repos Success',
-  props<{ repos: Repo[] }>()
+  props<{ repos: RepositoryData[] }>()
 );
 
 export const loadReposFailure = createAction(

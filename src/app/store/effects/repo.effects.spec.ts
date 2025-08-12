@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable, of, throwError, Subject } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { RepoEffects } from './repo.effects';
 import * as RepoActions from '../actions/repo.actions';
 import { GithubApiService } from '../../services/github-api.service';
-import { Repo } from '../models/repo.model';
+import { RepositoryData } from '../models/repo.model';
 
 describe('RepoEffects', () => {
   let actions$: Observable<any>;
@@ -32,6 +32,8 @@ describe('RepoEffects', () => {
         {
           id: 1,
           name: 'Repo 1',
+          full_name: 'owner1/repo-1',
+          html_url: 'https://github.com/owner1/repo-1',
           description: 'Description 1',
           stargazers_count: 100,
           open_issues_count: 5,
@@ -41,16 +43,25 @@ describe('RepoEffects', () => {
       ]
     };
 
-    const expectedRepos: Repo[] = [
+    const expectedRepos: RepositoryData[] = [
       {
         id: 1,
-        name: 'Repo 1',
-        description: 'Description 1',
-        stargazersCount: 100,
-        openIssuesCount: 5,
-        owner: { login: 'owner1', avatarUrl: 'avatar1.png' },
-        createdDate: '2025-07-01T12:00:00Z'
-      }
+        repositoryInformation: {
+          name: 'Repo 1',
+          fullName: 'owner1/repo-1',
+          htmlUrl: 'https://github.com/owner1/repo-1',
+          description: 'Description 1',
+          createdDate: '2025-07-01T12:00:00Z',
+        },
+        metaInformation: {
+          stargazersCount: 100,
+          openIssuesCount: 5,
+        },
+        owner: {
+          login: 'owner1',
+          avatarUrl: 'avatar1.png',
+        },
+      },
     ];
 
     const page = 1;

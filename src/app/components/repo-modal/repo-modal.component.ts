@@ -1,8 +1,8 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
-import { Repo } from '../../store/models/repo.model';
+import { RepositoryData } from '../../store/models/repo.model';
 import { RepoDetailsComponent } from '../repo-details/repo-details.component';
 import { AppState } from '../../store/reducers';
 import { rateRepo } from '../../store/actions/repo.actions';
@@ -20,7 +20,7 @@ export class RepoModalComponent {
   rating = 0;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {repo: Repo}, 
+    @Inject(MAT_DIALOG_DATA) public data: {repo: RepositoryData}, 
     private dialogRef: MatDialogRef<RepoModalComponent>
   ) {}
 

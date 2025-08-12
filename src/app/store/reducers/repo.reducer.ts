@@ -1,9 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { Repo } from '../models/repo.model';
+import { RepositoryData } from '../models/repo.model';
 import * as RepoActions from '../actions/repo.actions';
 
 export interface RepoState {
-  repos: Repo[];
+  repos: RepositoryData[];
   loading: boolean;
   error: string | null;
 }
@@ -34,7 +34,15 @@ export const repoReducer = createReducer(
   on(RepoActions.rateRepo, (state, { repoId, rating }) => ({
     ...state,
     repos: state.repos.map(repo =>
-      repo.id === repoId ? { ...repo, myRating: rating } : repo
-    )
+      repo.id === repoId
+        ? {
+            ...repo,
+            metaInformation: {
+              ...repo.metaInformation,
+              myRating: rating,
+            },
+          }
+        : repo
+    ),
   }))
 );

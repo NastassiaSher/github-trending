@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 
-import { Repo } from '../../store/models/repo.model';
+import { RepositoryData } from '../../store/models/repo.model';
 import { ShortNumberPipe } from '../../shared/pipes/short-number.pipe';
 import { StarRatingComponent } from "../../shared/star-rating/star-rating.component";
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class RepoDetailsComponent {
 
-  @Input() repo!: Repo;
+  @Input() repo!: RepositoryData;
 
   @Output() nameClick = new EventEmitter<number>();
 
@@ -35,7 +35,7 @@ export class RepoDetailsComponent {
   }
 
   shouldShowStarRating(): boolean {
-    const r = this.repo.myRating;
+    const r = this.repo.metaInformation.myRating;
     return r !== null && r !== undefined && r !== 0;
   }
 

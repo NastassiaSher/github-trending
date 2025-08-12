@@ -4,7 +4,7 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { selectRepos, selectLoading } from '../../store/selectors/repo.selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
-import { Repo } from '../../store/models/repo.model';
+import { RepositoryData } from '../../store/models/repo.model';
 import { By } from '@angular/platform-browser';
 
 
@@ -12,27 +12,43 @@ const matDialogMock = {
   open: jasmine.createSpy('open').and.returnValue({ afterClosed: () => of(true) })
 };
 
-const mockRepos: Repo[] = [
+const mockRepos: RepositoryData[] = [
   {
     id: 1,
-    name: 'Angular',
-    description: 'Framework',
-    stargazersCount: 100,
-    openIssuesCount: 5,
-    createdDate: new Date().toISOString(),
-    owner: { login: 'angular', avatarUrl: 'avatar.png' },
-    myRating: 4
+    repositoryInformation: {
+      name: 'Angular',
+      fullName: 'angular/angular',
+      htmlUrl: 'https://github.com/angular/angular',
+      description: 'Framework',
+      createdDate: new Date().toISOString(),
+    },
+    metaInformation: {
+      stargazersCount: 100,
+      openIssuesCount: 5,
+    },
+    owner: {
+      login: 'angular',
+      avatarUrl: 'avatar.png',
+    },
   },
   {
     id: 2,
-    name: 'React',
-    description: 'Library',
-    stargazersCount: 200,
-    openIssuesCount: 10,
-    createdDate: new Date().toISOString(),
-    owner: { login: 'facebook', avatarUrl: 'avatar2.png' },
-    myRating: 5
-  }
+    repositoryInformation: {
+      name: 'React',
+      fullName: 'facebook/react',
+      htmlUrl: 'https://github.com/facebook/react',
+      description: 'Library',
+      createdDate: new Date().toISOString(),
+    },
+    metaInformation: {
+      stargazersCount: 200,
+      openIssuesCount: 10,
+    },
+    owner: {
+      login: 'facebook',
+      avatarUrl: 'avatar2.png',
+    },
+  },
 ];
 
 describe('RepoListComponent', () => {
