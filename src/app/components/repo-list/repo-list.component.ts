@@ -77,7 +77,7 @@ export class RepoListComponent implements AfterViewInit, OnDestroy {
         repo: selectedRepo
       },
       maxWidth: this.dialogMaxWidth,
-      width: '100%'
+      width: '90%'
     });
   }
   

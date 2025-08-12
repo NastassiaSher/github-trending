@@ -1,7 +1,6 @@
 @use './../../../styles/variables.scss' as vars;
 
 .repo-container {
-    min-width: vars.$repo-container-width;
     background: vars.$repo-bg-color;
     border-radius: 20px;
 }
